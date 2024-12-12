@@ -20,7 +20,7 @@ export type IWelcomeProps = {
   siteInfo: AppInfo
   promptConfig: PromptConfig
   onStartChat: (inputs: Record<string, any>) => void
-  canEidtInpus: boolean
+  canEditInputs: boolean
   savedInputs: Record<string, any>
   onInputsChange: (inputs: Record<string, any>) => void
 }
@@ -32,7 +32,7 @@ const Welcome: FC<IWelcomeProps> = ({
   siteInfo,
   promptConfig,
   onStartChat,
-  canEidtInpus,
+  canEditInputs,
   savedInputs,
   onInputsChange,
 }) => {
@@ -107,7 +107,7 @@ const Welcome: FC<IWelcomeProps> = ({
               )}
             {item.type === 'string' && (
               <input
-                placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
+                placeholder={`${item.name}${!item.required ? `(${t('app.variableTable.optional')})` : ''}`}
                 value={inputs?.[item.key] || ''}
                 onChange={(e) => { setInputs({ ...inputs, [item.key]: e.target.value }) }}
                 className={'w-full flex-grow py-2 pl-3 pr-3 box-border rounded-lg bg-gray-50'}
@@ -117,9 +117,18 @@ const Welcome: FC<IWelcomeProps> = ({
             {item.type === 'paragraph' && (
               <textarea
                 className="w-full h-[104px] flex-grow py-2 pl-3 pr-3 box-border rounded-lg bg-gray-50"
-                placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
+                placeholder={`${item.name}${!item.required ? `(${t('app.variableTable.optional')})` : ''}`}
                 value={inputs?.[item.key] || ''}
                 onChange={(e) => { setInputs({ ...inputs, [item.key]: e.target.value }) }}
+              />
+            )}
+            {item.type === 'number' && (
+              <input
+                type="number"
+                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 "
+                placeholder={`${item.name}${!item.required ? `(${t('appDebug.variableTable.optional')})` : ''}`}
+                value={inputs[item.key]}
+                onChange={(e) => { onInputsChange({ ...inputs, [item.key]: e.target.value }) }}
               />
             )}
           </div>
@@ -131,8 +140,8 @@ const Welcome: FC<IWelcomeProps> = ({
   const canChat = () => {
     const inputLens = Object.values(inputs).length
     const promptVariablesLens = promptConfig.prompt_variables.length
-    const emytyInput = inputLens < promptVariablesLens || Object.values(inputs).filter(v => v === '').length > 0
-    if (emytyInput) {
+    const emptyInput = inputLens < promptVariablesLens || Object.values(inputs).filter(v => v === '').length > 0
+    if (emptyInput) {
       logError(t('app.errorMessage.valueOfVarRequired'))
       return false
     }
@@ -217,7 +226,7 @@ const Welcome: FC<IWelcomeProps> = ({
   }
 
   const renderHasSetInputsPublic = () => {
-    if (!canEidtInpus) {
+    if (!canEditInputs) {
       return (
         <TemplateVarPanel
           isFold={false}
@@ -260,7 +269,7 @@ const Welcome: FC<IWelcomeProps> = ({
   }
 
   const renderHasSetInputsPrivate = () => {
-    if (!canEidtInpus || !hasVar)
+    if (!canEditInputs || !hasVar)
       return null
 
     return (
@@ -284,7 +293,7 @@ const Welcome: FC<IWelcomeProps> = ({
   }
 
   const renderHasSetInputs = () => {
-    if ((!isPublicVersion && !canEidtInpus) || !hasVar)
+    if ((!isPublicVersion && !canEditInputs) || !hasVar)
       return null
 
     return (

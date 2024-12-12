@@ -7,7 +7,7 @@ export const APP_INFO: AppInfo = {
   description: 'Llama-3.1-70b',
   copyright: '',
   privacy_policy: '',
-  default_language: 'zh-Hans',
+  default_language: 'en',
 }
 
 export const isShowPrompt = false
