@@ -3,8 +3,8 @@ export const APP_ID = `${process.env.NEXT_PUBLIC_APP_ID}`
 export const API_KEY = `${process.env.NEXT_PUBLIC_APP_KEY}`
 export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}`
 export const APP_INFO: AppInfo = {
-  title: 'Llama-3.1-70b',
-  description: 'Llama-3.1-70b',
+  title: 'Llama-3.2-90b',
+  description: 'Llama-3.2-90b',
   copyright: '',
   privacy_policy: '',
   default_language: 'en',
