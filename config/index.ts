@@ -3,9 +3,9 @@ export const APP_ID = `${process.env.NEXT_PUBLIC_APP_ID}`
 export const API_KEY = `${process.env.NEXT_PUBLIC_APP_KEY}`
 export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}`
 export const APP_INFO: AppInfo = {
-  title: 'Llama-3.3-70b',
-  description: 'Llama-3.3-70b update 2024-12-17',
-  copyright: '',
+  title: '欢迎来到这里寻求答案',
+  description: 'Llama-3.3-70b: https://chat.cypggs.com Gemini2.0: https://g.cypggs.com  update 2024-12-19',
+  copyright: 'case',
   privacy_policy: '',
   default_language: 'en',
 }
