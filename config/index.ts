@@ -4,7 +4,7 @@ export const API_KEY = `${process.env.NEXT_PUBLIC_APP_KEY}`
 export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}`
 export const APP_INFO: AppInfo = {
   title: '欢迎来到这里寻求答案',
-  description: 'Llama-3.3-70b: https://chat.cypggs.com Gemini2.0: https://g.cypggs.com  update 2024-12-19',
+  description: 'DeepSeek-R1: https://chat.cypggs.com Gemini2.0: https://g.cypggs.com  update 2025-02-12',
   copyright: 'case',
   privacy_policy: '',
   default_language: 'en',
